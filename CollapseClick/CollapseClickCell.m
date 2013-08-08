@@ -21,14 +21,16 @@
 
 + (CollapseClickCell *)newCollapseClickCellWithTitle:(NSString *)title index:(int)index content:(UIView *)content {
     NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"CollapseClickCell" owner:nil options:nil];
-    CollapseClickCell *cell = [[CollapseClickCell alloc] initWithFrame:CGRectMake(0, 0, 320, kCCHeaderHeight)];
-    cell = [views objectAtIndex:0];
+    CollapseClickCell *cell = [views objectAtIndex:0];
     
     // Initialization Here
     cell.TitleLabel.text = title;
     cell.index = index;
     cell.TitleButton.tag = index;
     cell.ContentView.frame = CGRectMake(cell.ContentView.frame.origin.x, cell.ContentView.frame.origin.y, cell.ContentView.frame.size.width, content.frame.size.height);
+
+    content.autoresizingMask = cell.ContentView.autoresizingMask;
+    
     [cell.ContentView addSubview:content];
     
     return cell;

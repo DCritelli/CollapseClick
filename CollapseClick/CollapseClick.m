@@ -23,6 +23,7 @@
     return self;
 }
 
+#pragma mark - Layout
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -41,7 +42,11 @@
                 CGRect contentViewFrame = CGRectMake(cell.ContentView.frame.origin.x, cell.ContentView.frame.origin.y, cell.ContentView.frame.size.width, contentHeight);
                 
                 cell.ContentView.frame = contentViewFrame;
-                cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.ContentView.frame.origin.y + cell.ContentView.frame.size.height + kCCPad);
+                cell.frame = CGRectMake(cell.frame.origin.x,
+                                        cell.frame.origin.y,
+                                        cell.frame.size.width,
+                                        cell.ContentView.frame.origin.y + cell.ContentView.frame.size.height + kCCPad);
+                
                 [self repositionCollapseClickCellsBelowIndex:i withOffset:-1*offset];
             }
         }

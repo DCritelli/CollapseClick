@@ -49,9 +49,17 @@
                 
                 [self repositionCollapseClickCellsBelowIndex:i withOffset:-1*offset];
             }
+
+        }
+        
+        if (self.contentSize.width > CGRectGetWidth(self.frame)) {
+            [self setContentSize:CGSizeMake(CGRectGetWidth(self.frame), self.contentSize.height)];
         }
     }
+    
 }
+
+
 
 #pragma mark - Load Data
 -(void)reloadCollapseClick {
